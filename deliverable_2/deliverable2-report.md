@@ -30,9 +30,11 @@ If we have enough resource to make our visualize more data, we could also show t
 For our interests, we would like to extract a few specific columns from the dataset that will serve for our visualizations. 
 
 In short, demand data comes from the following columns:
-    - `adults`
-    - `children`
-    - `babies`
+```
+    - adults
+    - children
+    - babies
+```
 
 For each booking (row in the dataset), these three attributes are given, and we can sum up the numbers to get the `total number of guests` in a given booking. 
 
