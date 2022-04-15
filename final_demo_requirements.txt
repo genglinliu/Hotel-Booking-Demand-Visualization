@@ -1,0 +1,21 @@
+User Evaluation (optional, 5% bonus)
+Performing a user evaluation for your dashboard. We will cover common methods of visualization evaluation in lectures. 
+The evaluation must be completed before the final project demo and reported in a separate PDF document.
+
+Final Demo. (Tentatively will start on 4/26)
+Final project demos will be held online during the last two or three classes (depending on the number of teams). 
+Each group will be given 15 minutes to present their work. The 15 minutes should be roughly broken down as follows:
+
+a short slideshow, presenting data, user, and tasks (~3 mins)
+live demo of the tool (~10 mins)
+question and answer (~2 mins)
+The presentation date and order will be assigned randomly. 
+Therefore, you need to make sure that your tool is ready before the first date when presentations start.
+
+Demos will be evaluated according to these high-level criteria:
+
+The match between the defined user tasks and the tool’s functionalities
+Design of effective and efficient visualizations that match data type and support user tasks
+Supporting interactivity
+Supporting data manipulation and transformation
+Supporting exploration

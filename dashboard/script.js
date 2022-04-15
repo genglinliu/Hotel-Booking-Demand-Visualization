@@ -58,7 +58,6 @@ svg.selectAll("rect")
 
    })
    .on("mouseout", function() {
-   
     //Remove the tooltip
     d3.select("#tooltip").remove();
     
