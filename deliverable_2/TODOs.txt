@@ -1,0 +1,9 @@
+
+TODOs
+
+ - Add a section to the write up about how we are going to make a data exploration vs data monitoring
+dashboard. I think data exploration board is more suitable to our tasks.
+ - insert images of the digital sketches into the markdown file
+ - 
+ - Get a D3 example up and running. Could use some toy data
+ - 
