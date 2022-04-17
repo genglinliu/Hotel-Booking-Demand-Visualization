@@ -1,95 +1,47 @@
-//Width and height
-var w = 600;
-var h = 250;
+const xValue = d => d.Horsepower;
+const yValue = d => d.Displacement;
+const margin = { left: 30, right: 20, top: 20, bottom: 20 };
 
-var dataset = [ 5, 10, 13, 19, 21, 25, 22, 18, 15, 13,
-        11, 12, 15, 20, 18, 17, 16, 18, 23, 25 ];
+const svg = d3.select('svg');
+const width = svg.attr('width');
+const height = svg.attr('height');
+const innerWidth = width - margin.left - margin.right;
+const innerHeight = height - margin.top - margin.bottom;
 
-var xScale = d3.scaleBand()
-        .domain(d3.range(dataset.length))
-        .rangeRound([0, w])
-        .paddingInner(0.05);
+const g = svg.append('g')
+    .attr('transform', `translate(${margin.left}, ${margin.top})`);
+const xAxisG = g.append('g')
+    .attr('transform', `translate(0, ${innerHeight})`);
+const yAxisG = g.append('g');
 
-var yScale = d3.scaleLinear()
-        .domain([0, d3.max(dataset)])
-        .range([0, h]);
+const xScale = d3.scaleLinear();
+const yScale = d3.scaleLinear();
 
-//Create SVG element
-var svg = d3.select("body")
-      .append("svg")
-      .attr("width", w)
-      .attr("height", h);
+const xAxis = d3.axisBottom().scale(xScale);
+const yAxis = d3.axisLeft().scale(yScale);
 
-//Create bars
-svg.selectAll("rect")
-   .data(dataset)
-   .enter()
-   .append("rect")
-   .attr("x", function(d, i) {
-      return xScale(i);
-   })
-   .attr("y", function(d) {
-      return h - yScale(d);
-   })
-   .attr("width", xScale.bandwidth())
-   .attr("height", function(d) {
-      return yScale(d);
-   })
-   .attr("fill", function(d) {
-    return "rgb(0, 0, " + Math.round(d * 10) + ")";
-   })
-   .on("mouseover", function(event, d) {
+const row = d => {
+  d.Horsepower = +d.Horsepower;
+  d.Displacement = +d.Displacement;
+  return d;
+};
 
-    //Get this bar's x/y values, then augment for the tooltip
-    var xPosition = parseFloat(d3.select(this).attr("x")) + xScale.bandwidth() / 2;
-    var yPosition = parseFloat(d3.select(this).attr("y")) + 14;
+d3.csv('data/cars.csv', row)
+  .then(data => {
+    xScale
+      .domain(d3.extent(data, xValue))
+      .range([0, innerWidth]);
 
-    //Create the tooltip label
-    svg.append("text")
-       .attr("id", "tooltip")
-       .attr("x", xPosition)
-       .attr("y", yPosition)
-       .attr("text-anchor", "middle")
-       .attr("font-family", "sans-serif")
-       .attr("font-size", "11px")
-       .attr("font-weight", "bold")
-       .attr("fill", "whit")
-       .text(d);
+    yScale
+      .domain(d3.extent(data, yValue))
+      .range([innerHeight, 0]);
 
-   })
-   .on("mouseout", function() {
-    //Remove the tooltip
-    d3.select("#tooltip").remove();
-    
-   })
-   .on("click", function() {
-      sortBars();
-   });
+    g.selectAll('circle').data(data)
+      .enter().append('circle')
+      .attr('cx', d => xScale(xValue(d)))
+      .attr('cy', d => yScale(yValue(d)))
+      .attr('r', 5);
 
-//Define sort order flag
-var sortOrder = false;
-
-//Define sort function
-var sortBars = function() {
-
-  //Flip value of sortOrder
-    sortOrder = !sortOrder;
-
-  svg.selectAll("rect")
-     .sort(function(a, b) {
-        if (sortOrder) {
-          return d3.ascending(a, b);
-        } else {
-          return d3.descending(a, b);
-        }
-      })
-     .transition()
-     .delay(function(d, i) {
-       return i * 50;
-     })
-     .duration(1000)
-     .attr("x", function(d, i) {
-        return xScale(i);
-     });
-
-};	
+    xAxisG.call(xAxis);
+    yAxisG.call(yAxis);
+  });
