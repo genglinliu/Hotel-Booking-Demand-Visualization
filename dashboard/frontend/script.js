@@ -1,5 +1,5 @@
-const xValue = d => d.Horsepower;
-const yValue = d => d.Displacement;
+const xValue = d => d.arrival_date_year;
+const yValue = d => d.adr;
 const margin = { left: 30, right: 20, top: 20, bottom: 20 };
 
 const svg = d3.select('svg');
@@ -26,7 +26,7 @@ const row = d => {
   return d;
 };
 
-d3.csv('data/cars.csv', row)
+d3.csv('../data/hotel_bookings.csv', row)
   .then(data => {
     xScale
       .domain(d3.extent(data, xValue))
