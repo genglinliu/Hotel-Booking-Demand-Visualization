@@ -34,7 +34,8 @@ d3.csv('../data/demand_month_city.csv', row)
     xScale
       // .domain([new Date("2015-07-01"), new Date("2017-09-07")])
       .domain(data.map(d => d.arrival_date_month))
-      .range([0, innerWidth]);
+      .range([0, innerWidth])
+      .paddingInner(0.05);;
 
     yScale
       .domain(d3.extent(data, yValue))
