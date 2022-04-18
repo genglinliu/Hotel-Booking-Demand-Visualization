@@ -45,3 +45,7 @@ d3.csv('data/cars.csv', row)
     xAxisG.call(xAxis);
     yAxisG.call(yAxis);
   });
+
+// d3.csv("data/cars.csv", (d) => {
+//   console.log(d['Car']);
+// })
