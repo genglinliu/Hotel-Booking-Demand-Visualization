@@ -1,6 +1,6 @@
-const xValue = d => d.arrival_date_year;
-const yValue = d => d.adr;
-const margin = { left: 30, right: 20, top: 20, bottom: 20 };
+const xValue = d => d.arrival_date_month;
+const yValue = d => d.demand;
+const margin = { left: 60, right: 60, top: 60, bottom: 60 };
 
 const svg = d3.select('svg');
 const width = svg.attr('width');
@@ -14,22 +14,26 @@ const xAxisG = g.append('g')
     .attr('transform', `translate(0, ${innerHeight})`);
 const yAxisG = g.append('g');
 
-const xScale = d3.scaleLinear();
+// const xScale = d3.scaleTime();
+const xScale = d3.scaleBand();
 const yScale = d3.scaleLinear();
 
 const xAxis = d3.axisBottom().scale(xScale);
+                // .ticks(d3.timeMonth, 1)
+                // .tickFormat(d3.timeFormat('%b'));
 const yAxis = d3.axisLeft().scale(yScale);
 
 const row = d => {
-  d.Horsepower = +d.Horsepower;
-  d.Displacement = +d.Displacement;
+  d.demand = +d.demand;
   return d;
 };
 
-d3.csv('../data/hotel_bookings.csv', row)
+
+d3.csv('../data/demand_month_city.csv', row)
   .then(data => {
     xScale
-      .domain(d3.extent(data, xValue))
+      // .domain([new Date("2015-07-01"), new Date("2017-09-07")])
+      .domain(data.map(d => d.arrival_date_month))
       .range([0, innerWidth]);
 
     yScale
@@ -45,7 +49,3 @@ d3.csv('../data/hotel_bookings.csv', row)
     xAxisG.call(xAxis);
     yAxisG.call(yAxis);
   });
-
-// d3.csv("data/cars.csv", (d) => {
-//   console.log(d['Car']);
-// })
