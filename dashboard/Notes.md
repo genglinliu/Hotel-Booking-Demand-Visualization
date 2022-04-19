@@ -1,18 +1,35 @@
-## Previously:
+## 4/18
 
- - import csv to D3 [done]
- - Get the x and y axis for dashboard [done]
- - display scatter plot of monthly demand for city hotel [done]
+### Progress:
+ - imported csv to D3
+ - Got the x and y axis for dashboard 
+ - displayed scatter plot of monthly demand for city hotel
 
-## Thoughts
-
+### Thoughts
   - Preprocess data and generate specified dataframes in python (on jupyter notebook)
     - including getting the x-axis labels ordered, showing only a type of hotel, etc
   - Import the prepared csv into d3 and just display 
     - Use `scaleBand()` for categorical data (x-axis) and `scaleLinear()` for quantitative data (y-axis)
 
-## TODOs
-
-  - Make histogram and line plot instead of scatter plot
+### TODOs
+  - make bar plot and line plot instead of scatter plot
   - Make csv files for monthly demand resort, all-time demand, etc.
   - interactability through clicking buttons, dropdown menu, etc.
+
+
+## 4/19
+
+### Progress
+ - Made bar plots with hovering effect for monthly hotel demands.
+ - got rid of y-axis of the plot because the orientation was off and I don't know how to fix it
+
+### Thoughts
+ - js sucks but we will make it work
+
+### TODOs
+ - Have a description of the webpage 
+ - Make buttons for users to interact with the plots
+ - Make a line plot for demands
+ - Make more csv files for different time lines
+   - OR.. obtain the raw data as an array and just switch between different views by filtering the array
+   - we could have one big array for resort demand values and another one for city. Same with revenue. 
