@@ -14,38 +14,35 @@ const xAxisG = g.append('g')
     .attr('transform', `translate(0, ${innerHeight})`);
 const yAxisG = g.append('g');
 
-// const xScale = d3.scaleTime();
-const xScale = d3.scaleBand();
-const yScale = d3.scaleLinear();
-
-const xAxis = d3.axisBottom().scale(xScale);
-                // .ticks(d3.timeMonth, 1)
-                // .tickFormat(d3.timeFormat('%b'));
-const yAxis = d3.axisLeft().scale(yScale);
-
 const row = d => {
   d.demand = +d.demand;
   return d;
 };
 
-
 d3.csv('../data/demand_month_city.csv', row)
   .then(data => {
-    xScale
-      // .domain([new Date("2015-07-01"), new Date("2017-09-07")])
+    // const xScale = d3.scaleTime();
+    const xScale = d3.scaleBand()
       .domain(data.map(d => d.arrival_date_month))
       .range([0, innerWidth])
-      .paddingInner(0.05);;
-
-    yScale
+      .paddingInner(0.05);
+    const yScale = d3.scaleLinear()
       .domain(d3.extent(data, yValue))
-      .range([innerHeight, 0]);
+      .range([0, innerHeight]);
+      console.log(d3.extent(data, yValue));
 
-    g.selectAll('circle').data(data)
-      .enter().append('circle')
-      .attr('cx', d => xScale(xValue(d)))
-      .attr('cy', d => yScale(yValue(d)))
-      .attr('r', 5);
+    const xAxis = d3.axisBottom().scale(xScale);
+    const yAxis = d3.axisLeft().scale(yScale);
+
+    g.selectAll('rect').data(data)
+      .enter().append('rect')
+      .attr('x', d => xScale(xValue(d)))
+      .attr('y', d => innerHeight - yScale(yValue(d)))
+      .attr("width", xScale.bandwidth())
+      .attr("height", function(d) {
+         return yScale(yValue(d));
+      })
+      .attr("fill", "rgb(102, 178, 255)");
 
     xAxisG.call(xAxis);
     yAxisG.call(yAxis);
