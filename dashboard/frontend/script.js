@@ -21,18 +21,17 @@ const row = d => {
 
 d3.csv('../data/demand_month_city.csv', row)
   .then(data => {
-    // const xScale = d3.scaleTime();
     const xScale = d3.scaleBand()
       .domain(data.map(d => d.arrival_date_month))
       .range([0, innerWidth])
       .paddingInner(0.05);
     const yScale = d3.scaleLinear()
-      .domain(d3.extent(data, yValue))
+      .domain([1000, d3.max(data, yValue)])
       .range([0, innerHeight]);
-      console.log(d3.extent(data, yValue));
 
+    // no more yAxis since it's always upside down.. f it
     const xAxis = d3.axisBottom().scale(xScale);
-    const yAxis = d3.axisLeft().scale(yScale);
+    // const yAxis = d3.axisLeft().scale(yScale);
 
     g.selectAll('rect').data(data)
       .enter().append('rect')
@@ -42,7 +41,35 @@ d3.csv('../data/demand_month_city.csv', row)
       .attr("height", function(d) {
          return yScale(yValue(d));
       })
-      .attr("fill", "rgb(102, 178, 255)");
+      .attr("fill", "rgb(102, 178, 255)")
+    
+      .on("mouseover", function(event, d) {
+
+        //Get this bar's x/y values, then augment for the tooltip
+        var xPosition = parseFloat(d3.select(this).attr("x")) + xScale.bandwidth() / 2 + 60;
+        var yPosition = parseFloat(d3.select(this).attr("y")) + 30;
+
+        //Create the tooltip label
+        svg.append("text")
+           .attr("id", "tooltip")
+           .attr("x", xPosition)
+           .attr("y", yPosition)
+           .attr("text-anchor", "middle")
+           .attr("font-family", "sans-serif")
+           .attr("font-size", "11px")
+           .attr("font-weight", "bold")
+           .attr("fill", "whit")
+           .text(yValue(d));
+
+        d3.select(this).attr("opacity", "60%");
+    
+       })
+       .on("mouseout", function() {
+        //Remove the tooltip
+        d3.select("#tooltip").remove();
+        d3.select(this).attr("opacity", "100%");
+       })
+
 
     xAxisG.call(xAxis);
     yAxisG.call(yAxis);
