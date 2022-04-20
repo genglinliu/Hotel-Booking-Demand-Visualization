@@ -29,9 +29,8 @@ d3.csv('../data/demand_month_city.csv', row)
       .domain([1000, d3.max(data, yValue)])
       .range([0, innerHeight]);
 
-    // no more yAxis since it's always upside down.. f it
+    // no more yAxis since it's always upside down
     const xAxis = d3.axisBottom().scale(xScale);
-    // const yAxis = d3.axisLeft().scale(yScale);
 
     g.selectAll('rect').data(data)
       .enter().append('rect')
@@ -62,8 +61,9 @@ d3.csv('../data/demand_month_city.csv', row)
            .text(yValue(d));
 
         d3.select(this).attr("opacity", "60%");
-    
+
        })
+
        .on("mouseout", function() {
         //Remove the tooltip
         d3.select("#tooltip").remove();
@@ -72,5 +72,4 @@ d3.csv('../data/demand_month_city.csv', row)
 
 
     xAxisG.call(xAxis);
-    yAxisG.call(yAxis);
   });
