@@ -1,3 +1,5 @@
+// the only thing we need to change is the csv file import
+
 const xValue = d => d.arrival_date_month;
 const yValue = d => d.demand;
 const margin = { left: 60, right: 60, top: 60, bottom: 60 };
@@ -19,7 +21,7 @@ const row = d => {
   return d;
 };
 
-d3.csv('../data/demand_month_city.csv', row)
+d3.csv('../data/demand_month_resort.csv', row)
   .then(data => {
     const xScale = d3.scaleBand()
       .domain(data.map(d => d.arrival_date_month))
@@ -40,7 +42,7 @@ d3.csv('../data/demand_month_city.csv', row)
       .attr("height", function(d) {
          return yScale(yValue(d));
       })
-      .attr("fill", "rgb(102, 178, 255)")
+      .attr("fill", "green")
     
       .on("mouseover", function(event, d) {
 
@@ -72,4 +74,4 @@ d3.csv('../data/demand_month_city.csv', row)
 
 
     xAxisG.call(xAxis);
-});
+  });
