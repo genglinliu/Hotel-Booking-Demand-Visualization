@@ -35,4 +35,7 @@
    - we could have one big array for resort demand values and another one for city. Same with revenue. 
 
 ## 4/20s
+<<<<<<< HEAD
 -
+=======
+>>>>>>> 96aad2c1746c4efb21c725405eb6c0b241e84498
