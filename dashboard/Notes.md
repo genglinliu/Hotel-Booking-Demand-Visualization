@@ -35,5 +35,24 @@
    - we could have one big array for resort demand values and another one for city. Same with revenue. 
 
 ## 4/20s
-# Vinitha's updates
--changing anushka's branch
+
+### updates
+ - Everyone has their own separate branch - commit to your own branch and Genglin will merge it to the main branch
+
+### Distribute work
+ - demand monthly, weekly view for 2015, 2016, 2017 separately (three plots on same screen)
+
+ - Plot Type:
+    - bar plots
+    - line plots
+ - Data Type:
+    - Demand 
+    - Revenue
+    - market segment donut charts (time permitting)
+ - View Type:
+    - monthly
+    - weekly
+
+ - misc features:
+    - tool-tip on hover over bars (showing number of adults/children/babies in guests)
+    - form/menu suggesting users to select features
