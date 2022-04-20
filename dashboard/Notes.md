@@ -33,3 +33,5 @@
  - Make more csv files for different time lines
    - OR.. obtain the raw data as an array and just switch between different views by filtering the array
    - we could have one big array for resort demand values and another one for city. Same with revenue. 
+
+## 4/20s
