@@ -57,7 +57,7 @@ d3.csv('../data/demand_month_city.csv', row)
            .attr("font-family", "sans-serif")
            .attr("font-size", "11px")
            .attr("font-weight", "bold")
-           .attr("fill", "whit")
+           .attr("fill", "black")
            .text(yValue(d));
 
         d3.select(this).attr("opacity", "60%");
