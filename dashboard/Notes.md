@@ -34,7 +34,7 @@
    - OR.. obtain the raw data as an array and just switch between different views by filtering the array
    - we could have one big array for resort demand values and another one for city. Same with revenue. 
 
-## 4/20s
+## 4/20
 
 ### updates
  - Everyone has their own separate branch - commit to your own branch and Genglin will merge it to the main branch
@@ -56,3 +56,8 @@
  - misc features:
     - tool-tip on hover over bars (showing number of adults/children/babies in guests)
     - form/menu suggesting users to select features
+
+## 4/22
+
+### Updates
+ - added line chart feature for weekly city demand
