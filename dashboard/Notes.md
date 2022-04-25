@@ -61,3 +61,9 @@
 
 ### Updates
  - added line chart feature for weekly city demand
+
+
+## 4/24
+
+### TODOs
+ - generate all the necessary csv datasets and organize files
