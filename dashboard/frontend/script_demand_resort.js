@@ -30,9 +30,13 @@ d3.csv('../data/demand_month_resort.csv', row)
     const yScale = d3.scaleLinear()
       .domain([1000, d3.max(data, yValue)])
       .range([0, innerHeight]);
+    //Added new scale for drawing
+    const y1Scale = d3.scaleLinear()
+      .domain([d3.max(data, yValue),0])
+      .range([0, innerHeight]);
 
-    // no more yAxis since it's always upside down
     const xAxis = d3.axisBottom().scale(xScale);
+    const yAxis = d3.axisLeft().scale(y1Scale);
 
     g.selectAll('rect').data(data)
       .enter().append('rect')
@@ -74,4 +78,5 @@ d3.csv('../data/demand_month_resort.csv', row)
 
 
     xAxisG.call(xAxis);
+    yAxisG.call(yAxis);
   });

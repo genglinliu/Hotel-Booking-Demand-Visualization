@@ -3,15 +3,67 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <!-- <script src="https://cdn.jsdelivr.net/npm/d3@7"></script> -->
     <script src="../d3_source/d3.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <title>Hotel Booking Demand Dashboard</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
+
   <body>
     <h1>City Hotel Booking Demand per Month</h1>
     <svg width="960" height="500"></svg>
     <button id="button-switch" onclick="location.href = 'index_demand_resort.html';">switch city/resort</button>
+    <button id="button-switch" onclick="location.href = 'index_weekly_demand_city.html';">switch weekly city demand</button>
     <script src="script.js"></script>
+
+
+    <!-- ----------------Container----------------------------------------- -->
+
+    <div class="container-fluid h-100">
+      <div class="row row-cols-1 bg-danger">Dashboard Header</div>
+      <div class="row row-cols-2 h-50">
+        <div class="col-3 bg-success">
+          <div id="form">
+            <!-- ------------------Radio Buttons Data Type-------------------------------- -->
+            <div>
+              <label for="Gender">Select Data Type</label>
+              <p>
+                <input type="radio" name="demand" value="demand" checked> Total Guests<br>
+                <input type="radio" name="price" value="price"> Daily Rate per Guest<br>
+              </p>
+            </div>
+            
+            <!-- ------------------Checkboxes Hotel Type -------------------------------- -->
+            <div>
+              <label for="Gender">Select Hotel</label>
+              <p>
+                <input type="checkbox" name="city" value="city"> City Hotel<br>
+                <input type="checkbox" name="resort" value="resort"> Resort Hotel<br>
+              </p>
+            </div>
+      
+            <!-- ------------------Radio Buttons Time View Type-------------------------------- -->
+            <div>
+              <label for="Gender">Select Time Scale</label>
+              <p>
+                <input type="radio" name="monthly" value="monthly" checked> Monthly<br>
+                <input type="radio" name="weekly" value="weekly"> Weekly<br>
+              </p>
+            </div>
+          </div>
+      
+        </div>
+        <div class="col-9 bg-warning">Line Chart</div>
+      </div>
+      <div class="row row-cols-3 h-50">
+        <div class="col bg-primary">World Map</div>
+        <div class="col bg-success">Donut Chart</div>
+        <div class="col bg-primary">Side-by-side bar chart</div>
+      </div>
+    </div>
+
   </body>
 </html>

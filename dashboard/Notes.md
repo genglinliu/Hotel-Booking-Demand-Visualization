@@ -34,4 +34,51 @@
    - OR.. obtain the raw data as an array and just switch between different views by filtering the array
    - we could have one big array for resort demand values and another one for city. Same with revenue. 
 
-## 4/20s
+## 4/20
+
+### updates
+ - Everyone has their own separate branch - commit to your own branch and Genglin will merge it to the main branch
+
+### Distribute work
+ - demand monthly, weekly view for 2015, 2016, 2017 separately (three plots on same screen)
+
+ - Plot Type:
+    - bar plots
+    - line plots
+ - Data Type:
+    - Demand 
+    - Revenue
+    - market segment donut charts (time permitting)
+ - View Type:
+    - monthly
+    - weekly
+
+ - misc features:
+    - tool-tip on hover over bars (showing number of adults/children/babies in guests)
+    - form/menu suggesting users to select features
+
+## 4/22
+
+### Updates
+ - added line chart feature for weekly city demand
+
+
+## 4/24
+
+### TODOs
+ - generate all the necessary csv datasets and organize files
+
+
+## 4/27
+ 
+### progress: 
+ - redesign dashboard and got layout working.
+ - user selection form is created
+ - [Google doc](https://docs.google.com/document/d/1ak2YFiu2zyt9GGlPcnDfjrZvdKDNKCNIfTp9_guTXzE/edit?usp=sharing)
+
+### TODOs
+ - The work is split up, should look into side by side bar chart
+
+### Thoughts
+ - For quick prototyping, we can just have placeholder images in there instead of real data
+ - Keep working in D3 for brownie points
