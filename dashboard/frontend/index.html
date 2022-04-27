@@ -19,16 +19,49 @@
     <button id="button-switch" onclick="location.href = 'index_weekly_demand_city.html';">switch weekly city demand</button>
     <script src="script.js"></script>
 
+
+    <!-- ----------------Container----------------------------------------- -->
+
     <div class="container-fluid h-100">
-      <h2>Row Cols</h2>
+      <div class="row row-cols-1 bg-danger">Dashboard Header</div>
       <div class="row row-cols-2 h-50">
-        <div class="col-2 bg-success">1 of 2</div>
-        <div class="col-10 bg-warning">2 of 2</div>
+        <div class="col-3 bg-success">
+          <div id="form">
+            <!-- ------------------Radio Buttons Data Type-------------------------------- -->
+            <div>
+              <label for="Gender">Select Data Type</label>
+              <p>
+                <input type="radio" name="demand" value="demand" checked> Total Guests<br>
+                <input type="radio" name="price" value="price"> Daily Rate per Guest<br>
+              </p>
+            </div>
+            
+            <!-- ------------------Checkboxes Hotel Type -------------------------------- -->
+            <div>
+              <label for="Gender">Select Hotel</label>
+              <p>
+                <input type="checkbox" name="city" value="city"> City Hotel<br>
+                <input type="checkbox" name="resort" value="resort"> Resort Hotel<br>
+              </p>
+            </div>
+      
+            <!-- ------------------Radio Buttons Time View Type-------------------------------- -->
+            <div>
+              <label for="Gender">Select Time Scale</label>
+              <p>
+                <input type="radio" name="monthly" value="monthly" checked> Monthly<br>
+                <input type="radio" name="weekly" value="weekly"> Weekly<br>
+              </p>
+            </div>
+          </div>
+      
+        </div>
+        <div class="col-9 bg-warning">Line Chart</div>
       </div>
       <div class="row row-cols-3 h-50">
-        <div class="col bg-primary">1 of 3</div>
-        <div class="col bg-success">2 of 3</div>
-        <div class="col bg-primary">3 of 3</div>
+        <div class="col bg-primary">World Map</div>
+        <div class="col bg-success">Donut Chart</div>
+        <div class="col bg-primary">Side-by-side bar chart</div>
       </div>
     </div>
 
