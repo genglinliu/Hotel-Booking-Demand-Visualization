@@ -67,3 +67,18 @@
 
 ### TODOs
  - generate all the necessary csv datasets and organize files
+
+
+## 4/27
+ 
+### progress: 
+ - redesign dashboard and got layout working.
+ - user selection form is created
+ - [Google doc](https://docs.google.com/document/d/1ak2YFiu2zyt9GGlPcnDfjrZvdKDNKCNIfTp9_guTXzE/edit?usp=sharing)
+
+### TODOs
+ - The work is split up, should look into side by side bar chart
+
+### Thoughts
+ - For quick prototyping, we can just have placeholder images in there instead of real data
+ - Keep working in D3 for brownie points
