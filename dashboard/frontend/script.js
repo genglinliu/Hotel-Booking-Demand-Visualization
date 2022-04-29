@@ -28,9 +28,13 @@ d3.csv('../data/demand_month_city.csv', row)
     const yScale = d3.scaleLinear()
       .domain([1000, d3.max(data, yValue)])
       .range([0, innerHeight]);
+    //Added new scale for drawing
+    const y1Scale = d3.scaleLinear()
+      .domain([d3.max(data, yValue),0])
+      .range([0, innerHeight]);
 
-    // no more yAxis since it's always upside down
     const xAxis = d3.axisBottom().scale(xScale);
+    const yAxis = d3.axisLeft().scale(y1Scale);
 
     g.selectAll('rect').data(data)
       .enter().append('rect')
@@ -72,4 +76,29 @@ d3.csv('../data/demand_month_city.csv', row)
 
 
     xAxisG.call(xAxis);
+    yAxisG.call(yAxis);
 });
+
+
+window.addEventListener('load', function () {
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Online TA ', 'Offline TA/TO', 'Groups', 'Direct', 'Corporate', 'Complementary'],
+            datasets: [{
+                label: 'City Hotel',
+                data: [38748, 16747, 13975, 6093, 2986, 542],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            }, {
+                label: 'Resort Hotel',
+                data: [17729, 7472, 5836, 6513, 2309, 201],
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        }
+    });
+})
