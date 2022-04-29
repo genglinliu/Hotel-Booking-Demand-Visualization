@@ -59,11 +59,23 @@
       
         </div>
         <div class="col-9">
-          <canvas id="line-chartcanvas" style="background-color:#fff;"></canvas>
+          <canvas id="line-chartcanvas" style="height: 50%; width: 50%; background-color:#fff;"></canvas>
         </div>
       </div>
+      
       <div class="row row-cols-3 h-50">
-        <div class="col bg-primary">World Map</div>
+
+
+        <!------World map------->
+        <div class="col bg-light" style=" background-color: #fff;">
+            <canvas id="Chartmy" style="height: 200px; width: 200px"></canvas>
+        </div>
+            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <script type="text/javascript" src="https://unpkg.com/chartjs-chart-geo@3.5.2/build/index.umd.min.js"></script>
+          
+            <script src="mapscript.js"></script>
+
+
         <div class="col bg-success">Donut Chart</div>
         <div class="col"> Hotel-wise Market Segment Distribution
           <canvas id="myChart" width="400" height="400"></canvas>
