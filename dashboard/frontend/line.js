@@ -1,3 +1,5 @@
+// Line chart - Weekly demand
+
 $(document).ready(function() {
 
 	//get canvas
