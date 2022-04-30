@@ -30,3 +30,13 @@ button:hover {
   background-color: rgb(102, 178, 255);
   color: white;
 }
+
+
+/* for donut */
+
+#container {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}

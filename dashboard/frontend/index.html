@@ -3,11 +3,16 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
+    <script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-core.min.js"></script>
+<script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-bundle.min.js"></script>
+<script src="https://cdn.anychart.com/releases/8.11.0/js/anychart-base.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
     <!-- <script src="https://cdn.jsdelivr.net/npm/d3@7"></script> -->
     <script src="../d3_source/d3.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
     <title>Hotel Booking Demand Dashboard</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
@@ -64,7 +69,7 @@
       </div>
       <div class="row row-cols-3 h-50">
         <div class="col bg-primary">World Map</div>
-        <div class="col bg-success">Donut Chart</div>
+        <div class="col bg-success" id="container">Donut Chart</div>
         <div class="col"> Hotel-wise Market Segment Distribution
           <canvas id="myChart" width="400" height="400"></canvas>
         </div>
