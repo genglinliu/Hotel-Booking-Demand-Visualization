@@ -96,3 +96,4 @@
  - fix layout 
  - presentation and storytelling
  - extra credit: user eval
+ - file organization
