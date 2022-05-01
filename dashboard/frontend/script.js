@@ -127,7 +127,7 @@ anychart.onDocumentReady(function () {
   chart.title("Doughnut Chart: Basic Sample");
 
   // set the container id
-  chart.container("container");
+  chart.container("donut");
 
   // initiate drawing the chart
   chart.draw();

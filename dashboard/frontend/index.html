@@ -16,6 +16,11 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
     <title>Hotel Booking Demand Dashboard</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-core.min.js" type="text/javascript"></script>
+    <script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-map.min.js" type="text/javascript"></script>
+    <script src="https://cdn.anychart.com/releases/8.7.1/geodata/custom/world/world.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.3.15/proj4.js" type="text/javascript"></script>
+    <script src="https://cdn.anychart.com/releases/8.7.1/js/anychart-data-adapter.min.js"></script>
   </head>
 
   <body>
@@ -67,14 +72,38 @@
           <canvas id="line-chartcanvas-monthly" style="background-color:#fff;"></canvas>
         </div>
       </div>
+      
       <div class="row row-cols-3 h-50">
-        <div class="col bg-primary">World Map</div>
-        <div class="col bg-success" id="container">Donut Chart</div>
+
+
+            <!------World map------->
+
+        <div id="container" style="align-content: center; width: 100%;
+        height:  100%;
+        margin: 0;
+        padding-top: 2%;">
+
+
+          <script src="mapscript.js"></script>
+
+        </div>
+        
+        <div class="col bg-success" id="donut">Donut Chart</div>
         <div class="col"> Hotel-wise Market Segment Distribution
           <canvas id="myChart" width="400" height="400"></canvas>
         </div>
       </div>
     </div>
 
+
+
+
+
+    
+
+  
+
+
+</div>  
   </body>
 </html>
