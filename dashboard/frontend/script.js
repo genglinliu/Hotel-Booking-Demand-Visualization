@@ -108,23 +108,34 @@ window.addEventListener('load', function () {
 anychart.onDocumentReady(function () {
 
   // create data
-  var data = [
-    {x: "A", value: 637166},
-    {x: "B", value: 721630},
-    {x: "C", value: 148662},
-    {x: "D", value: 78662},
-    {x: "E", value: 90000}
+
+  // 0,City Hotel,No Deposit,66442
+  // 1,City Hotel,Non Refund,12868
+  // 2,City Hotel,Refundable,20
+  // 3,Resort Hotel,No Deposit,38199
+  // 4,Resort Hotel,Non Refund,1719
+  // 5,Resort Hotel,Refundable,142
+  var data_city = [
+    {x: "No Deposit", value: 66442},
+    {x: "Non Refund", value: 12868},
+    {x: "Refundable", value: 20}
+  ];
+
+  var data_resort = [
+    {x: "No Deposit", value: 38199},
+    {x: "Non Refund", value: 1719},
+    {x: "Refundable", value: 142}
   ];
 
   // create a pie chart and set the data
-  var chart = anychart.pie(data);
+  var chart = anychart.pie(data_resort);
 
   /* set the inner radius
   (to turn the pie chart into a doughnut chart)*/
-  chart.innerRadius("30%");
+  chart.innerRadius("50%");
 
   // set the chart title
-  chart.title("Doughnut Chart: Basic Sample");
+  chart.title("Deposit Type Distribution");
 
   // set the container id
   chart.container("donut");
