@@ -142,16 +142,18 @@ $(document).ready(function() {
 	};
 
 	const footer = (tooltipItems) => {
+        let td = 0
         let babies = 0;
         let children = 0;
         let adults = 0;
       
         tooltipItems.forEach(function(tooltipItem) {
-          babies += tooltipItem.raw.babies;
-          children += tooltipItem.raw.children;
-          adults += tooltipItem.raw.adults;
-        });
-        return 'Adults: ' + adults + '\nChildren: ' + children + '\nBabies: ' + babies;
+            td += tooltipItem.raw.y;
+            babies += tooltipItem.raw.babies;
+            children += tooltipItem.raw.children;
+            adults += tooltipItem.raw.adults;
+          });
+          return 'Total Demand: ' + td + '\nAdults: ' + adults + '\nChildren: ' + children + '\nBabies: ' + babies;
       };
 
 	var options = {
