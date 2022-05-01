@@ -19,14 +19,14 @@
   </head>
 
   <body>
-    <h1>City Hotel Booking Demand per Month</h1>
+    <!--<h1>City Hotel Booking Demand per Month</h1>
     <svg width="960" height="500"></svg>
     <button id="button-switch" onclick="location.href = 'index_demand_resort.html';">switch city/resort</button>
-    <button id="button-switch" onclick="location.href = 'index_weekly_demand_city.html';">switch weekly city demand</button>
+    <button id="button-switch" onclick="location.href = 'index_weekly_demand_city.html';">switch weekly city demand</button>-->
     <script src="script.js"></script>
     <script src="line_monthly.js"></script>
 
-
+    
     <!-- ----------------Container----------------------------------------- -->
 
     <div class="container-fluid h-100">
@@ -36,16 +36,16 @@
           <div id="form">
             <!-- ------------------Radio Buttons Data Type-------------------------------- -->
             <div>
-              <label for="Gender">Select Data Type</label>
+              <label for="DataType">Select Data Type</label>
               <form>
                 <input type="radio" name="demand" value="demand" checked> Total Guests<br>
-                <input type="radio" name="price" value="price"> Daily Rate per Guest<br>
+                <input type="radio" name="demand" value="price"> Daily Rate per Guest<br>
               </form>
             </div>
             
             <!-- ------------------Checkboxes Hotel Type -------------------------------- -->
             <div>
-              <label for="Gender">Select Hotel</label>
+              <label for="Hotel">Select Hotel</label>
               <p>
                 <input type="checkbox" name="city" value="city"> City Hotel<br>
                 <input type="checkbox" name="resort" value="resort"> Resort Hotel<br>
@@ -54,10 +54,10 @@
       
             <!-- ------------------Radio Buttons Time View Type-------------------------------- -->
             <div>
-              <label for="Gender">Select Time Scale</label>
+              <label for="TimeScale">Select Time Scale</label>
               <p>
-                <input type="radio" name="monthly" value="monthly" checked> Monthly<br>
-                <input type="radio" name="weekly" value="weekly"> Weekly<br>
+                <input type="radio" onclick="location.href = 'index.html';" name="monthly" value="monthly" checked> Monthly<br>
+                <input type="radio" onclick="location.href = 'index_weekly_demand_city.html';" name="monthly" value="weekly"> Weekly<br>
               </p>
             </div>
           </div>

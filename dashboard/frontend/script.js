@@ -1,4 +1,4 @@
-const xValue = d => d.arrival_date_month;
+/*const xValue = d => d.arrival_date_month;
 const yValue = d => d.demand;
 const margin = { left: 60, right: 60, top: 60, bottom: 60 };
 
@@ -77,7 +77,7 @@ d3.csv('../data/demand_month_city.csv', row)
 
     xAxisG.call(xAxis);
     yAxisG.call(yAxis);
-});
+});*/
 
 
 window.addEventListener('load', function () {
