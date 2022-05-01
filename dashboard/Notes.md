@@ -82,3 +82,17 @@
 ### Thoughts
  - For quick prototyping, we can just have placeholder images in there instead of real data
  - Keep working in D3 for brownie points
+
+
+## 5/1
+
+### update
+ - merging everyone's work
+
+### TODOs
+ - real data for donut chart
+ - switch between city and resort for donut chart
+ - interactivity on line chart
+ - fix layout 
+ - presentation and storytelling
+ - extra credit: user eval
