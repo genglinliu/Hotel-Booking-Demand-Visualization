@@ -128,18 +128,32 @@ anychart.onDocumentReady(function () {
   ];
 
   // create a pie chart and set the data
-  var chart = anychart.pie(data_resort);
-
-  /* set the inner radius
-  (to turn the pie chart into a doughnut chart)*/
+  var chart = anychart.pie(data_city);
+  // set the inner radius to turn the pie chart into a doughnut chart
   chart.innerRadius("50%");
-
-  // set the chart title
-  chart.title("Deposit Type Distribution");
-
-  // set the container id
+  chart.title("City Hotel Deposit Type Distribution");
   chart.container("donut");
-
-  // initiate drawing the chart
   chart.draw();
+
+  let charts = document.getElementsByName('hotel');
+  
+  for (let i = 0; i < charts.length; i++) {
+    charts[i].addEventListener("change", function() {
+      let val = this.value; // this == the clicked radio,
+      if (val == "city") {
+        console.log("city")
+        chart.title("City Hotel Deposit Type Distribution");
+        chart.data(data_city);
+      } 
+      else if (val === "resort") {
+        console.log("resort")
+        chart.title("Resort Hotel Deposit Type Distribution");
+        chart.data(data_resort);
+      }
+      chart.innerRadius("50%");
+      
+      chart.container("donut");
+      chart.draw();
+    });
+  }
 });
