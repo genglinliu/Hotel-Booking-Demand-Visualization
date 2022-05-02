@@ -1105,18 +1105,22 @@ function changeTime(){
     if (time == "monthly" && dt == "demand") {
         chart.data = datam;
         chart.options = optionsm;
+        document.getElementById("demand").style.visibility="visible";
     }
     else if (time == "weekly" && dt == "demand") {
         chart.data = dataw;
         chart.options = optionsw;
+        document.getElementById("demand").style.visibility="visible";
     }
     else if (time == "monthly" && dt == "revenue") {
         chart.data = datamr;
         chart.options = optionsmr;
+        document.getElementById("demand").style.visibility="hidden";
     }
     else if (time == "weekly" && dt == "revenue") {
         chart.data = datawr;
         chart.options = optionswr;
+        document.getElementById("demand").style.visibility="hidden";
     }
     chart.update(); 
 }
