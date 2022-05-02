@@ -133,10 +133,586 @@
       
         </div>
         <div class="col-10">
-          <canvas id="line-chartcanvas-monthly" style="background-color:#fff;"></canvas>
+          <canvas id="chart" style="background-color:#fff;"></canvas>
+          <script>
+            const ctx = document.getElementById('chart').getContext('2d');
+    const footer = (tooltipItems) => {
+        let td = 0
+        let babies = 0;
+        let children = 0;
+        let adults = 0;
+      
+        tooltipItems.forEach(function(tooltipItem) {
+          td += tooltipItem.raw.month.y;
+          babies += tooltipItem.raw.month.babies;
+          children += tooltipItem.raw.month.children;
+          adults += tooltipItem.raw.month.adults;
+        });
+        return 'Total Demand: ' + td + '\nAdults: ' + adults + '\nChildren: ' + children + '\nBabies: ' + babies;
+      };
+
+      var datam = {
+		    labels : ["July 2015","August 2015","September 2015","October 2015","November 2015","December 2015",
+        "January 2016","February 2016","March 2016","April 2016","May 2016","June 2016","July 2016","August 2016",
+        "September 2016","October 2016","November 2016","December 2016",
+        "January 2017","February 2017","March 2017","April 2017","May 2017","June 2017","July 2017","August 2017"],
+		    datasets : [
+                {
+                    label : "City Hotel",
+                    data : [
+                        {x:"July 2015", month: {
+                            y:2687, adults: 2671, children: 14, babies: 2}
+                        },
+                        {x:"August 2015", month: {
+                            y:4878, adults: 4697, children: 165, babies: 16}
+                        },
+                        {x:"September 2015", month: {
+                            y:6386, adults: 6282, children: 90, babies: 14}
+                        },
+                        {x:"October 2015", month: {
+                            y:6029, adults: 5910, children: 98, babies: 21}
+                        },
+                        {x:"November 2015", month: {
+                            y:1951, adults: 1918, children: 25, babies: 8}
+                        },
+                        {x:"December 2015", month: {
+                            y:3050, adults: 2907, children: 120, babies: 23}
+                        },
+                        {x: "January 2016", month: {
+                            y:2285, adults: 2200, children: 69, babies: 16}
+                        },
+                        {x: "February 2016", month: {
+                            y:4331, adults: 4124, children: 194, babies: 13}
+                        },
+                        {x:"March 2016", month: {
+                            y:5893, adults: 5599, children: 279, babies: 15}
+                        },
+                        {x:"April 2016", month: {
+                            y:7021, adults: 6671, children: 339, babies: 11}
+                        },
+                        {x:"May 2016", month: {
+                            y:6932, adults: 6671, children: 254, babies: 7}
+                        },
+                        {x:"June 2016", month: {
+                            y:7251, adults: 7012, children: 222, babies: 17}
+                        },
+                        {x:"July 2016", month: {
+                            y:6857, adults: 6231, children: 605, babies: 21}
+                        },
+                        {x:"August 2016", month: {
+                            y:7660, adults: 6904, children: 730, babies: 26}
+                        },
+                        {x:"September 2016", month: {
+                            y:7575, adults: 7287, children: 261, babies: 27}
+                        },
+                        {x:"October 2016", month: {
+                            y:8104, adults: 7755, children: 336, babies: 13}
+                        },
+                        {x:"November 2016", month: {
+                            y:5573, adults: 5412, children: 147, babies: 14}
+                        },
+                        {x:"December 2016", month: {
+                            y:5095, adults: 4702, children: 378, babies: 15}
+                        },
+                        {x: "January 2017", month: {
+                            y:4436, adults: 4178, children: 244, babies: 14}
+                        },
+                        {x: "February 2017", month: {
+                            y:5045, adults: 4722, children: 305, babies: 18}
+                        },
+                        {x:"March 2017", month: {
+                            y:6440, adults: 6259, children: 165, babies: 16}
+                        },
+                        {x:"April 2017", month: {
+                            y:8080, adults: 7619, children: 448, babies: 13}
+                        },
+                        {x:"May 2017", month: {
+                            y:8532, adults: 8287, children: 235, babies: 10}
+                        },
+                        {x:"June 2017", month: {
+                            y:7865, adults: 7507, children: 347, babies: 11}
+                        },
+                        {x:"July 2017", month: {
+                            y:7659, adults: 7073, children: 574, babies: 12}
+                        },
+                        {x:"August 2017", month: {
+                            y:6863, adults: 6240, children: 604, babies: 19}
+                        }
+                    ],
+                    backgroundColor : "blue",
+                    borderColor : "lightblue",
+                    fill : false,
+                    lineTension : 0,
+                    pointRadius : 4
+                },
+                {
+                    label : "Resort Hotel",
+                    data : [
+                        {x:"July 2015", month: {
+                            y:3028, adults: 2752, children: 252, babies: 24}
+                        },
+                        {x:"August 2015", month: {
+                            y:3162, adults: 2848, children: 263, babies: 51}
+                        },
+                        {x:"September 2015", month: {
+                            y:3340, adults: 3230, children: 93, babies: 17}
+                        },
+                        {x:"October 2015", month: {
+                            y:3055, adults: 2950, children: 94, babies: 11}
+                        },
+                        {x:"November 2015", month: {
+                            y:1856, adults: 1796, children: 47, babies: 13}
+                        },
+                        {x:"December 2015", month: {
+                            y:2420, adults: 2301, children: 96, babies: 23}
+                        },
+                        {x: "January 2016", month: {
+                            y:1550, adults: 1496, children: 47, babies: 7}
+                        },
+                        {x: "February 2016", month: {
+                            y:2884, adults: 2742, children: 128, babies: 14}
+                        },
+                        {x:"March 2016", month: {
+                            y:3368, adults: 3185, children: 164, babies: 19}
+                        },
+                        {x:"April 2016", month: {
+                            y:3450, adults: 3323, children: 114, babies: 13}
+                        },
+                        {x:"May 2016", month: {
+                            y:3488, adults: 3311, children: 152, babies: 25}
+                        },
+                        {x:"June 2016", month: {
+                            y:2850, adults: 2625, children: 201, babies: 24}
+                        },
+                        {x:"July 2016", month: {
+                            y:3244, adults: 2887, children: 319, babies: 38}
+                        },
+                        {x:"August 2016", month: {
+                            y:3940, adults: 3447, children: 438, babies: 55}
+                        },
+                        {x:"September 2016", month: {
+                            y:3065, adults: 2882, children: 154, babies: 29}
+                        },
+                        {x:"October 2016", month: {
+                            y:3856, adults: 3664, children: 175, babies: 17}
+                        },
+                        {x:"November 2016", month: {
+                            y:2432, adults: 2362, children: 60, babies: 10}
+                        },
+                        {x:"December 2016", month: {
+                            y:2631, adults: 2472, children: 142, babies: 17}
+                        },
+                        {x: "January 2017", month: {
+                            y:2253, adults: 2150, children: 92, babies: 11}
+                        },
+                        {x: "February 2017", month: {
+                            y:3039, adults: 2862, children: 163, babies: 14}
+                        },
+                        {x:"March 2017", month: {
+                            y:2731, adults: 2632, children: 92, babies: 7}
+                        },
+                        {x:"April 2017", month: {
+                            y:3449, adults: 3193, children: 240, babies: 16}
+                        },
+                        {x:"May 2017", month: {
+                            y:3504, adults: 3270, children: 204, babies: 30}
+                        },
+                        {x:"June 2017", month: {
+                            y:3515, adults: 3209, children: 287, babies: 19}
+                        },
+                        {x:"July 2017", month: {
+                            y:4132, adults: 3550, children: 558, babies: 24}
+                        },
+                        {x:"August 2017", month: {
+                            y:4268, adults: 3659, children: 580, babies: 29}
+                        }
+                        ],
+                    backgroundColor : "green",
+                    borderColor : "lightgreen",
+                    fill : false,
+                    lineTension : 0,
+                    pointRadius : 4
+                }
+            ]
+	    };
+
+        var dataw = {
+            labels : ["Week 27 2015","Week 28 2015","Week 29 2015","Week 30 2015","Week 31 2015","Week 32 2015","Week 33 2015","Week 34 2015","Week 35 2015",
+            "Week 36 2015","Week 37 2015","Week 38 2015","Week 39 2015","Week 40 2015","Week 41 2015","Week 42 2015","Week 43 2015","Week 44 2015","Week 45 2015",
+            "Week 46 2015","Week 47 2015","Week 48 2015","Week 49 2015","Week 50 2015","Week 51 2015","Week 52 2015","Week 53 2015",
+        "Week 1 2016","Week 2 2016","Week 3 2016","Week 4 2016","Week 5 2016","Week 6 2016","Week 7 2016","Week 8 2016","Week 9 2016","Week 10 2016","Week 11 2016",
+        "Week 12 2016","Week 13 2016","Week 14 2016","Week 15 2016","Week 16 2016","Week 17 2016","Week 18 2016","Week 19 2016","Week 20 2016","Week 21 2016",
+        "Week 22 2016","Week 23 2016","Week 24 2016","Week 25 2016","Week 26 2016","Week 27 2016","Week 28 2016","Week 29 2016","Week 30 2016","Week 31 2016",
+        "Week 32 2016","Week 33 2016","Week 34 2016","Week 35 2016","Week 36 2016","Week 37 2016","Week 38 2016","Week 39 2016","Week 40 2016","Week 41 2016",
+        "Week 42 2016","Week 43 2016","Week 44 2016","Week 45 2016","Week 46 2016","Week 47 2016","Week 48 2016","Week 49 2016","Week 50 2016","Week 51 2016",
+        "Week 52 2016","Week 53 2016","Week 1 2017","Week 2 2017","Week 3 2017","Week 4 2017","Week 5 2017","Week 6 2017","Week 7 2017","Week 8 2017","Week 9 2017",
+        "Week 10 2017","Week 11 2017","Week 12 2017","Week 13 2017","Week 14 2017","Week 15 2017","Week 16 2017","Week 17 2017","Week 18 2017","Week 19 2017",
+        "Week 20 2017","Week 21 2017","Week 22 2017","Week 23 2017","Week 24 2017","Week 25 2017","Week 26 2017","Week 27 2017","Week 28 2017","Week 29 2017",
+        "Week 30 2017","Week 31 2017","Week 32 2017","Week 33 2017","Week 34 2017","Week 35 2017"],
+            datasets : [
+                {
+                    label : "City Hotel",
+                    data : [
+                        {x: "Week 27 2015", month: {y: 339, adults: 339, children: 0, babies: 0}},
+                        {x: "Week 28 2015", month: {y: 420, adults: 416, children: 3, babies: 1}},
+                        {x: "Week 29 2015", month: {y: 670, adults: 669, children: 1, babies: 0}},
+                        {x: "Week 30 2015", month: {y: 875, adults: 871, children: 4, babies: 0}},
+                        {x: "Week 31 2015", month: {y: 450, adults: 442, children: 7, babies: 1}},
+                        {x: "Week 32 2015", month: {y: 1102, adults: 1081, children: 13, babies: 8}},
+                        {x: "Week 33 2015", month: {y: 1620, adults: 1573, children: 47, babies: 0}},
+                        {x: "Week 34 2015", month: {y: 929, adults: 874, children: 53, babies: 2}},
+                        {x: "Week 35 2015", month: {y: 914, adults: 860, children: 48, babies: 6}},
+                        {x: "Week 36 2015", month: {y: 1191, adults: 1145, children: 44, babies: 2}},
+                        {x: "Week 37 2015", month: {y: 1477, adults: 1459, children: 16, babies: 2}},
+                        {x: "Week 38 2015", month: {y: 1674, adults: 1653, children: 17, babies: 4}},
+                        {x: "Week 39 2015", month: {y: 1719, adults: 1701, children: 14, babies: 4}},
+                        {x: "Week 40 2015", month: {y: 1174, adults: 1166, children: 5, babies: 3}},
+                        {x: "Week 41 2015", month: {y: 1673, adults: 1649, children: 19, babies: 5}},
+                        {x: "Week 42 2015", month: {y: 1627, adults: 1604, children: 14, babies: 9}},
+                        {x: "Week 43 2015", month: {y: 962, adults: 925, children: 35, babies: 2}},
+                        {x: "Week 44 2015", month: {y: 1164, adults: 1133, children: 27, babies: 4}},
+                        {x: "Week 45 2015", month: {y: 497, adults: 488, children: 7, babies: 2}},
+                        {x: "Week 46 2015", month: {y: 406, adults: 397, children: 6, babies: 3}},
+                        {x: "Week 47 2015", month: {y: 444, adults: 439, children: 4, babies: 1}},
+                        {x: "Week 48 2015", month: {y: 552, adults: 545, children: 5, babies: 2}},
+                        {x: "Week 49 2015", month: {y: 844, adults: 806, children: 33, babies: 5}},
+                        {x: "Week 50 2015", month: {y: 639, adults: 623, children: 12, babies: 4}},
+                        {x: "Week 51 2015", month: {y: 251, adults: 232, children: 16, babies: 3}},
+                        {x: "Week 52 2015", month: {y: 417, adults: 393, children: 21, babies: 3}},
+                        {x: "Week 53 2015", month: {y: 951, adults: 902, children: 41, babies: 8}},
+                        {x: "Week 1 2016", month: {y: 280, adults: 269, children: 11, babies: 0}},
+                        {x: "Week 2 2016", month: {y: 360, adults: 342, children: 16, babies: 2}},
+                        {x: "Week 3 2016", month: {y: 437, adults: 401, children: 26, babies: 10}},
+                        {x: "Week 4 2016", month: {y: 573, adults: 568, children: 5, babies: 0}},
+                        {x: "Week 5 2016", month: {y: 602, adults: 587, children: 11, babies: 4}},
+                        {x: "Week 6 2016", month: {y: 663, adults: 625, children: 35, babies: 3}},
+                        {x: "Week 7 2016", month: {y: 967, adults: 897, children: 70, babies: 0}},
+                        {x: "Week 8 2016", month: {y: 1324, adults: 1298, children: 24, babies: 2}},
+                        {x: "Week 9 2016", month: {y: 1072, adults: 1012, children: 55, babies: 5}},
+                        {x: "Week 10 2016", month: {y: 1177, adults: 1143, children: 30, babies: 4}},
+                        {x: "Week 11 2016", month: {y: 1009, adults: 977, children: 31, babies: 1}},
+                        {x: "Week 12 2016", month: {y: 1232, adults: 1185, children: 43, babies: 4}},
+                        {x: "Week 13 2016", month: {y: 1861, adults: 1721, children: 134, babies: 6}},
+                        {x: "Week 14 2016", month: {y: 1269, adults: 1202, children: 62, babies: 5}},
+                        {x: "Week 15 2016", month: {y: 1633, adults: 1567, children: 64, babies: 2}},
+                        {x: "Week 16 2016", month: {y: 1640, adults: 1549, children: 89, babies: 2}},
+                        {x: "Week 17 2016", month: {y: 1730, adults: 1653, children: 75, babies: 2}},
+                        {x: "Week 18 2016", month: {y: 1701, adults: 1598, children: 100, babies: 3}},
+                        {x: "Week 19 2016", month: {y: 1502, adults: 1438, children: 60, babies: 4}},
+                        {x: "Week 20 2016", month: {y: 1577, adults: 1522, children: 54, babies: 1}},
+                        {x: "Week 21 2016", month: {y: 1880, adults: 1813, children: 67, babies: 0}},
+                        {x: "Week 22 2016", month: {y: 1281, adults: 1233, children: 47, babies: 1}},
+                        {x: "Week 23 2016", month: {y: 1749, adults: 1700, children: 46, babies: 3}},
+                        {x: "Week 24 2016", month: {y: 1696, adults: 1642, children: 50, babies: 4}},
+                        {x: "Week 25 2016", month: {y: 1923, adults: 1865, children: 53, babies: 5}},
+                        {x: "Week 26 2016", month: {y: 1306, adults: 1271, children: 33, babies: 2}},
+                        {x: "Week 27 2016", month: {y: 1755, adults: 1647, children: 104, babies: 4}},
+                        {x: "Week 28 2016", month: {y: 1522, adults: 1397, children: 122, babies: 3}},
+                        {x: "Week 29 2016", month: {y: 1535, adults: 1381, children: 149, babies: 5}},
+                        {x: "Week 30 2016", month: {y: 1600, adults: 1463, children: 132, babies: 5}},
+                        {x: "Week 31 2016", month: {y: 1567, adults: 1402, children: 157, babies: 8}},
+                        {x: "Week 32 2016", month: {y: 1666, adults: 1481, children: 181, babies: 4}},
+                        {x: "Week 33 2016", month: {y: 1773, adults: 1605, children: 165, babies: 3}},
+                        {x: "Week 34 2016", month: {y: 1857, adults: 1650, children: 200, babies: 7}},
+                        {x: "Week 35 2016", month: {y: 1642, adults: 1506, children: 129, babies: 7}},
+                        {x: "Week 36 2016", month: {y: 1646, adults: 1538, children: 101, babies: 6}},
+                        {x: "Week 37 2016", month: {y: 1577, adults: 1517, children: 51, babies: 9}},
+                        {x: "Week 38 2016", month: {y: 1849, adults: 1772, children: 69, babies: 8}},
+                        {x: "Week 39 2016", month: {y: 1695, adults: 1620, children: 69, babies: 6}},
+                        {x: "Week 40 2016", month: {y: 1959, adults: 1912, children: 44, babies: 3}},
+                        {x: "Week 41 2016", month: {y: 1768, adults: 1708, children: 58, babies: 2}},
+                        {x: "Week 42 2016", month: {y: 1895, adults: 1849, children: 46, babies: 0}},
+                        {x: "Week 43 2016", month: {y: 1816, adults: 1729, children: 82, babies: 5}},
+                        {x: "Week 44 2016", month: {y: 1872, adults: 1751, children: 117, babies: 4}},
+                        {x: "Week 45 2016", month: {y: 1770, adults: 1712, children: 55, babies: 3}},
+                        {x: "Week 46 2016", month: {y: 1496, adults: 1469, children: 25, babies: 2}},
+                        {x: "Week 47 2016", month: {y: 1217, adults: 1179, children: 30, babies: 8}},
+                        {x: "Week 48 2016", month: {y: 1107, adults: 1068, children: 36, babies: 3}},
+                        {x: "Week 49 2016", month: {y: 1165, adults: 1097, children: 66, babies: 2}},
+                        {x: "Week 50 2016", month: {y: 1263, adults: 1168, children: 93, babies: 2}},
+                        {x: "Week 51 2016", month: {y: 655, adults: 627, children: 27, babies: 1}},
+                        {x: "Week 52 2016", month: {y: 829, adults: 753, children: 73, babies:3}},
+                        {x: "Week 53 2016", month: {y: 1637, adults: 1489, children: 141, babies: 7}},
+                        {x: "Week 1 2017", month: {y: 1185, adults: 1092, children: 89, babies: 4}},
+                        {x: "Week 2 2017", month: {y: 951, adults: 896, children: 48, babies: 7}},
+                        {x: "Week 3 2017", month: {y: 956, adults: 905, children: 49, babies: 2}},
+                        {x: "Week 4 2017", month: {y: 1112, adults: 1065, children: 46, babies: 1}},
+                        {x: "Week 5 2017", month: {y: 939, adults: 899, children: 37, babies: 3}},
+                        {x: "Week 6 2017", month: {y: 933, adults: 855, children: 69, babies: 9}},
+                        {x: "Week 7 2017", month: {y: 1482, adults: 1392, children: 85, babies: 5}},
+                        {x: "Week 8 2017", month: {y: 1374, adults: 1290, children: 84, babies: 0}},
+                        {x: "Week 9 2017", month: {y: 1485, adults: 1401, children: 80, babies: 4}},
+                        {x: "Week 10 2017", month: {y: 1333, adults: 1307, children: 22, babies: 4}},
+                        {x: "Week 11 2017", month: {y: 1533, adults: 1487, children: 41, babies: 5}},
+                        {x: "Week 12 2017", month: {y: 1471, adults: 1433, children: 36, babies: 2}},
+                        {x: "Week 13 2017", month: {y: 1385, adults: 1337, children: 45, babies: 3}},
+                        {x: "Week 14 2017", month: {y: 1749, adults: 1645, children: 103, babies: 1}},
+                        {x: "Week 15 2017", month: {y: 2066, adults: 1932, children: 131, babies: 3}},
+                        {x: "Week 16 2017", month: {y: 1760, adults: 1650, children: 107, babies: 3}},
+                        {x: "Week 17 2017", month: {y: 2144, adults: 2049, children: 90, babies: 5}},
+                        {x: "Week 18 2017", month: {y: 2034, adults: 1995, children: 37, babies: 2}},
+                        {x: "Week 19 2017", month: {y: 1673, adults: 1638, children: 35, babies: 0}},
+                        {x: "Week 20 2017", month: {y: 2025, adults: 1975, children: 45, babies: 5}},
+                        {x: "Week 21 2017", month: {y: 1933, adults: 1835, children: 97, babies: 1}},
+                        {x: "Week 22 2017", month: {y: 1959, adults: 1892, children: 63, babies: 4}},
+                        {x: "Week 23 2017", month: {y: 1850, adults: 1779, children: 68, babies: 3}},
+                        {x: "Week 24 2017", month: {y: 1757, adults: 1690, children: 66, babies: 1}},
+                        {x: "Week 25 2017", month: {y: 1628, adults: 1557, children: 69, babies: 2}},
+                        {x: "Week 26 2017", month: {y: 1884, adults: 1765, children: 116, babies: 3}},
+                        {x: "Week 27 2017", month: {y: 1752, adults: 1623, children: 125, babies: 4}},
+                        {x: "Week 28 2017", month: {y: 1940, adults: 1796, children: 142, babies: 2}},
+                        {x: "Week 29 2017", month: {y: 1513, adults: 1396, children: 114, babies: 3}},
+                        {x: "Week 30 2017", month: {y: 1807, adults: 1661, children: 144, babies: 2}},
+                        {x: "Week 31 2017", month: {y: 1597, adults: 1463, children: 127, babies: 7}},
+                        {x: "Week 32 2017", month: {y: 1582, adults: 1445, children: 134, babies: 3}},
+                        {x: "Week 33 2017", month: {y: 1808, adults: 1617, children: 185, babies: 6}},
+                        {x: "Week 34 2017", month: {y: 1439, adults: 1303, children: 133, babies: 3}},
+                        {x: "Week 35 2017", month: {y: 881, adults: 820, children: 60, babies: 1}}
+                    ],
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    fill : false,
+                    lineTension : 0,
+                    pointRadius : 0.5
+                },
+                {
+                    label : "Resort Hotel",
+                    data : [
+                        {x: "Week 27 2015", month: {y: 373, adults: 353, children: 18, babies: 2}},
+                        {x: "Week 28 2015", month: {y: 598, adults: 540, children: 51, babies: 7}},
+                        {x: "Week 29 2015", month: {y: 742, adults: 676, children: 60, babies: 6}},
+                        {x: "Week 30 2015", month: {y: 718, adults: 639, children: 72, babies: 7}},
+                        {x: "Week 31 2015", month: {y: 772, adults: 692, children: 78, babies: 2}},
+                        {x: "Week 32 2015", month: {y: 648, adults: 581, children: 52, babies: 15}},
+                        {x: "Week 33 2015", month: {y: 779, adults: 708, children: 59, babies: 12}},
+                        {x: "Week 34 2015", month: {y: 686, adults: 619, children: 59, babies: 8}},
+                        {x: "Week 35 2015", month: {y: 698, adults: 627, children: 58, babies: 13}},
+                        {x: "Week 36 2015", month: {y: 894, adults: 843, children: 44, babies: 7}},
+                        {x: "Week 37 2015", month: {y: 700, adults: 676, children: 18, babies: 6}},
+                        {x: "Week 38 2015", month: {y: 878, adults: 853, children: 20, babies: 5}},
+                        {x: "Week 39 2015", month: {y: 749, adults: 732, children: 16, babies: 1}},
+                        {x: "Week 40 2015", month: {y: 637, adults: 618, children: 17, babies: 2}},
+                        {x: "Week 41 2015", month: {y: 971, adults: 934, children: 30, babies: 7}},
+                        {x: "Week 42 2015", month: {y: 598, adults: 582, children: 15, babies: 1}},
+                        {x: "Week 43 2015", month: {y: 713, adults: 688, children: 24, babies: 1}},
+                        {x: "Week 44 2015", month: {y: 431, adults: 419, children: 11, babies: 1}},
+                        {x: "Week 45 2015", month: {y: 426, adults: 414, children: 7, babies: 5}},
+                        {x: "Week 46 2015", month: {y: 300, adults: 289, children: 11, babies: 0}},
+                        {x: "Week 47 2015", month: {y: 661, adults: 640, children: 14, babies: 7}},
+                        {x: "Week 48 2015", month: {y: 407, adults: 391, children: 15, babies: 1}},
+                        {x: "Week 49 2015", month: {y: 732, adults: 710, children: 18, babies: 4}},
+                        {x: "Week 50 2015", month: {y: 311, adults: 301, children: 6, babies: 4}},
+                        {x: "Week 51 2015", month: {y: 302, adults: 292, children: 8, babies: 2}},
+                        {x: "Week 52 2015", month: {y: 583, adults: 540, children: 35, babies: 8}},
+                        {x: "Week 53 2015", month: {y: 554, adults: 520, children: 29, babies: 5}},
+                        {x: "Week 1 2016", month: {y: 181, adults: 169, children: 11, babies: 1}},
+                        {x: "Week 2 2016", month: {y: 363, adults: 358, children: 3, babies: 2}},
+                        {x: "Week 3 2016", month: {y: 347, adults: 222, children: 14, babies: 0}},
+                        {x: "Week 4 2016", month: {y: 324, adults: 317, children: 5, babies: 2}},
+                        {x: "Week 5 2016", month: {y: 309, adults: 293, children: 14, babies: 2}},
+                        {x: "Week 6 2016", month: {y: 592, adults: 561, children: 27, babies: 4}},
+                        {x: "Week 7 2016", month: {y: 920, adults: 889, children: 28, babies: 3}},
+                        {x: "Week 8 2016", month: {y: 488, adults: 456, children: 27, babies: 5}},
+                        {x: "Week 9 2016", month: {y: 821, adults: 775, children: 44, babies: 2}},
+                        {x: "Week 10 2016", month: {y: 566, adults: 555, children: 11, babies: 0}},
+                        {x: "Week 11 2016", month: {y: 609, adults: 590, children: 14, babies: 5}},
+                        {x: "Week 12 2016", month: {y: 716, adults: 673, children: 37, babies: 6}},
+                        {x: "Week 13 2016", month: {y: 928, adults: 862, children: 60, babies: 6}},
+                        {x: "Week 14 2016", month: {y: 740, adults: 686, children: 51, babies: 3}},
+                        {x: "Week 15 2016", month: {y: 769, adults: 740, children: 27, babies: 2}},
+                        {x: "Week 16 2016", month: {y: 654, adults: 642, children: 10, babies: 2}},
+                        {x: "Week 17 2016", month: {y: 829, adults: 794, children: 31, babies: 4}},
+                        {x: "Week 18 2016", month: {y: 1096, adults: 1053, children: 39, babies: 4}},
+                        {x: "Week 19 2016", month: {y: 727, adults: 691, children: 32, babies: 4}},
+                        {x: "Week 20 2016", month: {y: 864, adults: 832, children: 29, babies: 3}},
+                        {x: "Week 21 2016", month: {y: 918, adults: 871, children: 40, babies: 7}},
+                        {x: "Week 22 2016", month: {y: 643, adults: 601, children: 34, babies: 8}},
+                        {x: "Week 23 2016", month: {y: 782, adults: 742, children: 35, babies: 5}},
+                        {x: "Week 24 2016", month: {y: 597, adults: 557, children: 33, babies: 7}},
+                        {x: "Week 25 2016", month: {y: 729, adults: 660, children: 65, babies: 4}},
+                        {x: "Week 26 2016", month: {y: 663, adults: 609, children: 47, babies: 7}},
+                        {x: "Week 27 2016", month: {y: 613, adults: 545, children: 62, babies: 6}},
+                        {x: "Week 28 2016", month: {y: 615, adults: 548, children: 60, babies: 7}},
+                        {x: "Week 29 2016", month: {y: 726, adults: 653, children: 67, babies: 6}},
+                        {x: "Week 30 2016", month: {y: 847, adults: 746, children: 93, babies: 8}},
+                        {x: "Week 31 2016", month: {y: 740, adults: 666, children: 64, babies: 10}},
+                        {x: "Week 32 2016", month: {y: 899, adults: 766, children: 108, babies: 25}},
+                        {x: "Week 33 2016", month: {y: 970, adults: 843, children: 118, babies: 9}},
+                        {x: "Week 34 2016", month: {y: 928, adults: 812, children: 106, babies: 10}},
+                        {x: "Week 35 2016", month: {y: 835, adults: 745, children: 78, babies: 12}},
+                        {x: "Week 36 2016", month: {y: 792, adults: 719, children: 63, babies: 10}},
+                        {x: "Week 37 2016", month: {y: 639, adults: 596, children: 38, babies: 5}},
+                        {x: "Week 38 2016", month: {y: 667, adults: 616, children: 40, babies: 11}},
+                        {x: "Week 39 2016", month: {y: 812, adults: 779, children: 29, babies: 4}},
+                        {x: "Week 40 2016", month: {y: 672, adults: 644, children: 24, babies: 4}},
+                        {x: "Week 41 2016", month: {y: 800, adults: 756, children: 40, babies: 4}},
+                        {x: "Week 42 2016", month: {y: 738, adults: 710, children: 25, babies: 3}},
+                        {x: "Week 43 2016", month: {y: 1047, adults: 989, children: 56, babies: 2}},
+                        {x: "Week 44 2016", month: {y: 916, adults: 875, children: 36, babies: 5}},
+                        {x: "Week 45 2016", month: {y: 839, adults: 804, children: 29, babies: 6}},
+                        {x: "Week 46 2016", month: {y: 589, adults: 577, children: 11, babies: 1}},
+                        {x: "Week 47 2016", month: {y: 610, adults: 601, children: 7, babies: 2}},
+                        {x: "Week 48 2016", month: {y: 475, adults: 445, children: 28, babies: 2}},
+                        {x: "Week 49 2016", month: {y: 580, adults: 556, children: 20, babies: 4}},
+                        {x: "Week 50 2016", month: {y: 522, adults: 508, children: 12, babies: 2}},
+                        {x: "Week 51 2016", month: {y: 426, adults: 415, children: 8, babies: 3}},
+                        {x: "Week 52 2016", month: {y: 582, adults: 531, children: 48, babies: 3}},
+                        {x: "Week 53 2016", month: {y: 704, adults: 642, children: 56, babies: 6}},
+                        {x: "Week 1 2017", month: {y: 510, adults: 483, children: 26, babies: 1}},
+                        {x: "Week 2 2017", month: {y: 443, adults: 431, children: 11, babies: 1}},
+                        {x: "Week 3 2017", month: {y: 515, adults: 489, children: 23, babies: 3}},
+                        {x: "Week 4 2017", month: {y: 572, adults: 550, children: 17, babies: 5}},
+                        {x: "Week 5 2017", month: {y: 562, adults: 530, children: 27, babies: 5}},
+                        {x: "Week 6 2017", month: {y: 662, adults: 643, children: 18, babies: 1}},
+                        {x: "Week 7 2017", month: {y: 858, adults: 797, children: 58, babies: 3}},
+                        {x: "Week 8 2017", month: {y: 877, adults: 826, children: 45, babies: 6}},
+                        {x: "Week 9 2017", month: {y: 699, adults: 654, children: 45, babies: 0}},
+                        {x: "Week 10 2017", month: {y: 730, adults: 698, children: 31, babies: 1}},
+                        {x: "Week 11 2017", month: {y: 573, adults: 553, children: 19, babies: 1}},
+                        {x: "Week 12 2017", month: {y: 435, adults: 427, children: 7, babies: 1}},
+                        {x: "Week 13 2017", month: {y: 663, adults: 636, children: 23, babies: 4}},
+                        {x: "Week 14 2017", month: {y: 708, adults: 646, children: 60, babies: 2}},
+                        {x: "Week 15 2017", month: {y: 1018, adults: 918, children: 94, babies: 6}},
+                        {x: "Week 16 2017", month: {y: 716, adults: 689, children: 24, babies: 3}},
+                        {x: "Week 17 2017", month: {y: 772, adults: 719, children: 49, babies: 4}},
+                        {x: "Week 18 2017", month: {y: 864, adults: 814, children: 43, babies: 7}},
+                        {x: "Week 19 2017", month: {y: 748, adults: 713, children: 30, babies: 5}},
+                        {x: "Week 20 2017", month: {y: 636, adults: 599, children: 33, babies: 4}},
+                        {x: "Week 21 2017", month: {y: 884, adults: 797, children: 76, babies: 11}},
+                        {x: "Week 22 2017", month: {y: 1060, adults: 986, children: 70, babies: 4}},
+                        {x: "Week 23 2017", month: {y: 719, adults: 669, children: 45, babies: 5}},
+                        {x: "Week 24 2017", month: {y: 816, adults: 752, children: 58, babies: 6}},
+                        {x: "Week 25 2017", month: {y: 775, adults: 700, children: 70, babies: 5}},
+                        {x: "Week 26 2017", month: {y: 889, adults: 776, children: 107, babies: 6}},
+                        {x: "Week 27 2017", month: {y: 836, adults: 710, children: 121, babies: 5}},
+                        {x: "Week 28 2017", month: {y: 996, adults: 873, children: 118, babies: 5}},
+                        {x: "Week 29 2017", month: {y: 873, adults: 753, children: 115, babies: 5}},
+                        {x: "Week 30 2017", month: {y: 938, adults: 797, children: 136, babies: 5}},
+                        {x: "Week 31 2017", month: {y: 1005, adults: 862, children: 135, babies: 8}},
+                        {x: "Week 32 2017", month: {y: 918, adults: 782, children: 134, babies: 2}},
+                        {x: "Week 33 2017", month: {y: 1064, adults: 911, children: 141, babies: 12}},
+                        {x: "Week 34 2017", month: {y: 928, adults: 790, children: 131, babies: 7}},
+                        {x: "Week 35 2017", month: {y: 629, adults: 552, children: 76, babies: 1}}
+                    ],
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    fill : false,
+                    lineTension : 0,
+                    pointRadius : 0.5
+                }
+            ]
+        };
+
+        var optionsm = {
+            parsing: {
+                xAxisKey: 'x',
+                yAxisKey: 'month.y'
+            },
+            responsive: true,
+            aspectRatio:2.8,
+            //maintainAspectRatio: false,
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                      footer: footer,
+                    }
+                  },
+                title : {
+                    display : true,
+                    position : "top",
+                    text : "Hotel Monthly Demand",
+                    font :{
+                        size : 18,
+                        weight: "bold"
+                    },
+                    color : "#000"
+                }
+            },
+            legend : {
+                display : true,
+                position : "bottom"
+            },
+            scales: {
+                yAxis: {
+                    grid: {
+                        display: true
+                    }
+                }
+            }
+        };
+
+        var optionsw = {
+            parsing: {
+                xAxisKey: 'x',
+                yAxisKey: 'month.y'
+            },
+            responsive: true,
+            aspectRatio:2.6,
+            //maintainAspectRatio: false,
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                      footer: footer,
+                    }
+                  },
+                title : {
+                    display : true,
+                    position : "top",
+                    text : "Hotel Weekly Demand",
+                    font :{
+                        size : 18,
+                        weight: "bold"
+                    },
+                    color : "#000"
+                }
+            },
+            legend : {
+                display : true,
+                position : "bottom"
+            },
+            scales: {
+                yAxis: {
+                    grid: {
+                        display: true
+                    }
+                }
+            }
+        };
+
+    const chart = new Chart(ctx, {
+        type : "line",
+	    data : datam,
+        options : optionsm
+    })
+
+function changeTime(){
+    const time = document.getElementById('time').value;
+    if (time == "monthly") {
+        chart.data = datam;
+        chart.options = optionsm;
+    }
+    else if (time == "weekly") {
+        chart.data = dataw;
+        chart.options = optionsw;
+    }
+    chart.update(); 
+}
+
+function changeDemand(){
+    const demand = document.getElementById('demand').value;
+    chart.options.parsing.yAxisKey = `month.${demand}`;
+    chart.update(); 
+}
+          </script>
+          <br>
+          <select id="demand" onchange="changeDemand()">
+            <option value="y">Total Demand</option>
+            <option value="adults">Demand - Adults</option>
+            <option value="children">Demand - Children</option>
+            <option value="babies">Demand - Babies</option>
+          </select>
         </div>
       </div>
-
 
       <!-- Bottom three columns -->
       
@@ -147,7 +723,7 @@
         height:  100%;
         margin: 0;
         padding-top: 2%;">
-          <script src="mapscript.js"></script>
+          <script src="mapscript_city_demand.js"></script>
         </div>
 
         <!-- deposit type donut chart -->
