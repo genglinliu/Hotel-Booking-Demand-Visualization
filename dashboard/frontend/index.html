@@ -99,40 +99,8 @@
       <!-- <div class="row row-cols-1 bg-danger">
         <h5 class="center">AN INSIGHT INTO THE WORLD OF HOTEL BOOKINGS</h5>
       </div> -->
-      <div class="row row-cols-2 h-75">
-        <div class="col-2 bg-success">
-          <div id="form">
-            <!-- ------------------Radio Buttons Data Type-------------------------------- -->
-            <div>
-              <label for="DataType">Select Data Type</label>
-              <form>
-                <input type="radio" name="DataType" value="demand" checked> Total Guests<br>
-                <input type="radio" name="DataType" value="price"> Daily Rate per Guest<br>
-              </form>
-            </div>
-      
-            <!-- ------------------Radio Buttons Time View Type-------------------------------- -->
-            <div>
-              <label for="TimeScale">Select Time Scale</label>
-              <p>
-                <input type="radio" name="TimeScale" value="monthly" checked> Monthly<br>
-                <input type="radio" name="TimeScale" value="weekly"> Weekly<br>
-              </p>
-            </div>
-
-            <!-- ------------------Checkboxes Hotel Type -------------------------------- -->
-            <div>
-              <label for="Hotel">Select Hotel</label>
-              <p>
-                <input type="radio" name="hotel" value="city" id="city_hotel" checked="true"> City Hotel<br>
-                <input type="radio" name="hotel" value="resort" id="resort_hotel"> Resort Hotel<br>
-              </p>
-            </div>
-
-          </div>
-      
-        </div>
-        <div class="col-10">
+      <div class="row row-cols-2 h-100">
+        <div class="col-12">
           <canvas id="chart" style="background-color:#fff;"></canvas>
           <script>
             const ctx = document.getElementById('chart').getContext('2d');
