@@ -31,13 +31,58 @@
     <script src="script.js"></script>
     <script src="line_monthly.js"></script>
 
+    <!-- nav bar-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="index.html">AN INSIGHT INTO THE WORLD OF HOTEL BOOKINGS</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <!-- First dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Data Type
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#">Booking Demand</a>
+              <a class="dropdown-item" href="#">Daily Rate</a>
+            </div>
+          </li>
+          <!-- Second dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Time Scale
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#">Weekly</a>
+              <a class="dropdown-item" href="#">Monthly</a>
+            </div>
+          </li>
+          <!-- Third dropdown -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Select Hotel
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="#">City Hotel</a>
+              <a class="dropdown-item" href="#">Resort Hotel</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
     
     <!-- ----------------Container----------------------------------------- -->
 
     <div class="container-fluid h-100">
-      <div class="row row-cols-1 bg-danger">
+      <!-- <div class="row row-cols-1 bg-danger">
         <h5 class="center">AN INSIGHT INTO THE WORLD OF HOTEL BOOKINGS</h5>
-      </div>
+      </div> -->
       <div class="row row-cols-2 h-75">
         <div class="col-2 bg-success">
           <div id="form">
@@ -45,32 +90,29 @@
             <div>
               <label for="DataType">Select Data Type</label>
               <form>
-                <input type="radio" name="demand" value="demand" checked> Total Guests<br>
-                <input type="radio" name="demand" value="price"> Revenue<br>
+                <input type="radio" name="DataType" value="demand" checked> Total Guests<br>
+                <input type="radio" name="DataType" value="price"> Daily Rate per Guest<br>
               </form>
-            </div>
-            
-            <!-- ------------------Checkboxes Hotel Type -------------------------------- -->
-            <div>
-              <label for="Hotel">Select Hotel</label>
-              <p>
-                <input type="checkbox" name="city" value="city"> City Hotel<br>
-                <input type="checkbox" name="resort" value="resort"> Resort Hotel<br>
-              </p>
             </div>
       
             <!-- ------------------Radio Buttons Time View Type-------------------------------- -->
             <div>
               <label for="TimeScale">Select Time Scale</label>
               <p>
-                <select id="time" onchange="changeTime()">
-                    <option value="monthly">Monthly</option>
-                    <option value="weekly">Weekly</option>
-                  </select>
-                <!--<input type="radio" name="time" value="monthly" id = "tm" onchange="changeTime() checked> Monthly<br>
-                <input type="radio" name="time" value="weekly" id = "tw"> Weekly<br>-->
+                <input type="radio" onclick="location.href = 'index.html';" name="TimeScale" value="monthly" checked> Monthly<br>
+                <input type="radio" onclick="location.href = 'index_weekly_demand_city.html';" name="TimeScale" value="weekly"> Weekly<br>
               </p>
             </div>
+
+            <!-- ------------------Checkboxes Hotel Type -------------------------------- -->
+            <div>
+              <label for="Hotel">Select Hotel</label>
+              <p>
+                <input type="radio" name="hotel" value="city" id="city_hotel" checked="true"> City Hotel<br>
+                <input type="radio" name="hotel" value="resort" id="resort_hotel"> Resort Hotel<br>
+              </p>
+            </div>
+
           </div>
       
         </div>
