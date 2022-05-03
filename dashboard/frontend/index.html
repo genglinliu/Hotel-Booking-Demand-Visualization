@@ -71,21 +71,25 @@
               <a class="dropdown-item" href="#">Resort Hotel</a>
             </div>
           </li>-->
-          <!-- Regular Dropdown -->
-          <select id="DataType" onchange="changeTime()">
-            <option value="demand">Demand</option>
-            <option value="revenue">Daily Rate</option>
-          </select>
-          <!-- second -->
-          <select id="HotelType">
-            <option value="city">City Hotel</option>
-            <option value="resort">Resort Hotel</option>
-          </select>
-          <!-- third -->
-          <select id="TimeScale" onchange="changeTime()">
-            <option value="monthly">Monthly</option>
-            <option value="weekly">Weekly</option>
-          </select>
+
+          <div class="dropdown"> 
+                <!-- Regular Dropdown -->
+                <select id="DataType" onchange="changeTime()">
+                    <option value="demand">Demand</option>
+                    <option value="revenue">Revenue</option>
+                </select>
+                <!-- second -->
+                <select id="HotelType">
+                    <option value="city">City Hotel</option>
+                    <option value="resort">Resort Hotel</option>
+                </select>
+                <!-- third -->
+                <select id="TimeScale" onchange="changeTime()">
+                    <option value="monthly">Monthly</option>
+                    <option value="weekly">Weekly</option>
+                </select>
+          </div>
+
 
         </ul>
       </div>
@@ -101,12 +105,12 @@
       <div class="row row-cols-2 h-75">
         <div class="col-12">
             <br>
-            <select id="demand" onchange="changeDemand()">
+            <select class="dropdown" id="demand" onchange="changeDemand()">
                 <option value="y">Total Demand</option>
                 <option value="adults">Demand - Adults</option>
                 <option value="children">Demand - Children</option>
                 <option value="babies">Demand - Babies</option>
-              </select>
+            </select>
           <canvas id="chart" style="background-color:#fff;"></canvas>
           <script>
             const ctx = document.getElementById('chart').getContext('2d');
