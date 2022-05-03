@@ -13,7 +13,6 @@ anychart.onDocumentReady(function () {
         sumCases = geoData[i].adr
         data.push({ id: geoData[i].Country_2, value: sumCases, title: geoData[i].Country_2})
         sumCases = 0;
-
         
     };
 
@@ -22,7 +21,7 @@ anychart.onDocumentReady(function () {
 
     var series = chart.choropleth(data);
 
-    chart.title("Visitors' Countries- Resort Hotel Revenue");
+    chart.title("Visitors' Countries- Resort Hotel revenue");
 
     // color scale ranges
     ocs = anychart.scales.ordinalColor([
