@@ -4,7 +4,7 @@ This repo contains the source code for the hotel booking demand visualization da
 
 ### Usage
 
-To see the visualziation dashboard, do the following:
+To see the visualization dashboard, do the following:
 
 1. download and unzip the repository
 2. go to `/dashboard/frontend/index.html` and open the html file
